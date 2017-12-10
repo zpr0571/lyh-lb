@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>滑动轮播图</title>
+  <style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+    ul,li{
+      list-style: none;
+      display: block;
+    }
+    #box{
+      width: 500px;
+      height: 300px;
+      overflow: hidden;
+      border:2px solid yellow;
+      box-shadow: 0 0 10px red;
+      margin: 50px auto;
+      position: relative;
+      z-index: 999;
+    }
+    img{
+      width: 500px;
+      height: 300px;
+    }
+    .imgul{
+      width: 3000px;
+      height: 300px;
+      transition: all 0.5s;
+      
+    }
+    .imgul>li{
+      
+      width: 500px;
+      height: 300px;
+      float: left;
+    }
+    .cir{
+      display: block;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      margin-left: -50px;
+    }
+    .cir>li{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: red;
+      float: left;
+      margin-left: 10px;
+    }
+    .cir>li:nth-child(1){
+      background-color: black;
+    }
+    #box:hover>span{
+      display: block;
+    }
+    span{
+      display: none;
+      width: 20px;
+      height: 50px;
+      font-size: 30px;
+      position: absolute;
+      top: 50%;
+      margin-top: -25px;
+      color: red;
+      background: rgba(0,0,0,0.5);
+    }
+    #box>span:nth-child(3){
+      left: 0;
+    }
+    #box>span:nth-child(4){
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <ul class="imgul">
+      <li><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1793045417,524214852&fm=26&gp=0.jpg 
+
+" alt=""></li>
+      <li><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2689227664,1739615533&fm=26&gp=0.jpg 
+
+" alt=""></li>
+      <li><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1938368511,2798502318&fm=26&gp=0.jpg 
+
+" alt=""></li>
+      <li><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2086976680,3595411076&fm=26&gp=0.jpg 
+
+" alt=""></li>
+      <li><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2792698735,3388852560&fm=26&gp=0.jpg 
+
+" alt=""></li>
+      <li><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1793045417,524214852&fm=26&gp=0.jpg 
+
+" alt=""></li>
+    </ul>
+    <ul class="cir">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <span><</span>
+    <span>></span>
+  </div>
+  <script>
+  // 获取总父级元素
+    var box=document.getElementById('box').children;
+    // 获取图片
+    var imgul=box[0];
+    var imgli=imgul.children;
+    // 获取圆点
+    var cirli=box[1].children;
+    // 获取左右按钮
+    var imgleft=box[2];
+    var imgright=box[3];
+    var n=0;
+      var mytime=setInterval(fun,1000);
+      function fun(id){
+        for (var i = 0; i < cirli.length; i++) {
+          cirli[i].style.backgroundColor='red';
+        }
+      n>imgli.length-1?n=imgli.length-1:n++;  
+        imgul.style.transform='translateX(-'+n*500+'px)';
+        imgul.style.transition='all 0.5s';
+        // 改动在这里
+        if(id==imgli.length-2){
+          cirli[imgli.length-2].style.backgroundColor='black';
+        }else{
+          cirli[n%cirli.length].style.backgroundColor='black';
+        }
+        
+        
+        setTimeout(function(){
+            if (n==imgli.length-1) {
+              n=0;
+              imgul.style.transition='none';
+              imgul.style.transform='translateX(0)';
+            }
+          },500);
+          if (k==1) {
+            imgul.style.transition='none';
+            imgul.style.transform='translateX(-2500px)';
+            setTimeout(function(){
+            imgul.style.transition='all 0.5s';
+            imgul.style.transform='translateX(-2000px)';
+            n=imgli.length-2; 
+            k=0;
+            },10)
+          } 
+      }
+      var a,b,ist,k;
+      imgul.addEventListener('touchstart',function(){
+        clearInterval(mytime);
+        a=event.targetTouches[0].pageX;
+        ist=true;
+      });
+      imgul.addEventListener('touchmove',function(){
+        if (ist) {
+          b=event.targetTouches[0].pageX;
+          if (b-a<-20) {
+            fun();
+            ist=false;
+          }
+          if (b-a>20) {
+            n-=2;
+            if (n==-2) {
+              k=1;
+              n=imgli.length-2;
+            }
+            console.log(n)
+            fun(n);
+            ist=false;
+          }
+        }
+      })
+      imgul.addEventListener("touchend",function(){
+            mytime=setInterval(fun,1000)
+        })    
+  </script>
+</body>
+</html>

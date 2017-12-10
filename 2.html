@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script>
+    var a = 1;
+    function myfun(n,str,t){
+         // console.log(x,y);
+         var i = 0;
+        var mytime = setInterval(function(){
+                document.write(str+'  ');
+                i++;
+                if(i>n){
+                    clearInterval(mytime);
+                }
+          },t);
+
+    /*
+          var a = 10;
+          function myset(){
+               var a = 100;
+          }
+          myset();
+          document.write(a);
+          */
+    }
+myfun(2,"Hello",1000);
+myfun(8,"World",2000);
+myfun(10,"OK",500);
+
+    </script>
+    </body>
+</html>

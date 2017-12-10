@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>京东点击轮播</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		div.father{
+			width: 1000px;
+			height: 200px;
+			position: relative;
+			overflow: hidden;
+			border:2px solid red;
+		}
+		div.father>ul{
+			/*width: 5000px;*/
+		    transition-property: left;
+    		transition: 0.6s;
+    		overflow:hidden;
+	        position:absolute;
+	        top: 0;
+	        left: 0px;
+		}
+		#ul>div{
+			float: left;
+		}
+		div>ul>div>li{
+			float: left;
+		    width: 200px;
+		    height: 200px;
+		    list-style: none;
+		}
+		.clearfix:after{
+			width: 0;
+			height: 0;
+			display: block;
+			content: "";
+			clear: both;
+			overflow: hidden;
+		}
+		.clearfix{
+			zoom:1;
+		}
+		#prev{
+			width: 30px;
+			text-align: center;
+			height: 60px;
+			line-height: 60px;
+			background-color: silver;
+			position: absolute;
+			top:50%;
+			left:0;
+			cursor: pointer;
+			z-index: 1;
+		}
+		#next{
+			width: 30px;
+			text-align: center;
+			height: 60px;
+			line-height: 60px;
+			background-color: silver;
+			position: absolute;
+			top:50%;
+			right:0;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div id="prev" style="font-size:30px;"><</div>
+		<ul class="clearfix" id="ul">
+			<div class="clearfix">
+				<li><img src="1.jpg" alt=""></li>
+				<li><img src="2.jpg" alt=""></li>
+				<li><img src="3.jpg" alt=""></li>
+				<li><img src="4.jpg" alt=""></li>
+				<li><img src="5.jpg" alt=""></li>
+			</div>
+			<div class="clearfix">
+				<li><img src="6.jpg" alt=""></li>
+				<li><img src="7.jpg" alt=""></li>
+				<li><img src="8.jpg" alt=""></li>
+				<li><img src="9.jpg" alt=""></li>
+				<li><img src="10.jpg" alt=""></li>
+			</div>
+			<div class="clearfix">
+				<li><img src="11.jpg" alt=""></li>
+				<li><img src="12.jpg" alt=""></li>
+				<li><img src="13.jpg" alt=""></li>
+				<li><img src="14.jpg" alt=""></li>
+				<li><img src="15.jpg" alt=""></li>
+			</div>
+			<div class="clearfix">
+				<li><img src="16.jpg" alt=""></li>
+				<li><img src="17.jpg" alt=""></li>
+				<li><img src="18.jpg" alt=""></li>
+				<li><img src="19.jpg" alt=""></li>
+				<li><img src="20.jpg" alt=""></li>
+			</div>
+			<div class="clearfix">
+				<li><img src="1.jpg" alt=""></li>
+				<li><img src="2.jpg" alt=""></li>
+				<li><img src="3.jpg" alt=""></li>
+				<li><img src="4.jpg" alt=""></li>
+				<li><img src="5.jpg" alt=""></li>
+			</div>
+		</ul>				
+		<div id="next" style="font-size:30px;">></div>
+		
+	</div>
+	<script src="lyh.js"></script>
+</body>
+</html>

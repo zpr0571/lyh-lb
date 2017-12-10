@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Document</title>
+ <style type="text/css">
+ *{
+  padding: 0;
+  margin: 0;
+}
+ .container{
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+ }
+ .list{
+  position: absolute;
+  width: 1200px;
+  top: 0;
+  left: 0px;
+ }
+ .list li{
+  width: 200px;
+  float: left;
+  list-style: none;
+ }
+ .btn{
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 50px;
+  font-size: 40px;
+  text-align: center;
+  font-weight: bold;
+  top: 50%;
+  margin-top: -25px;
+  cursor:pointer;
+ }
+ .pre{
+  left: 0;
+ }
+ .next{
+  right: 0;
+ }
+ 
+ </style>
+</head>
+<body>
+ <div class="container">
+ <ul class="list" style="left: 0px">
+  <li><img src="1.jpg" alt=""></li>
+  <li><img src="2.jpg" alt=""></li>
+  <li><img src="3.jpg" alt=""></li>
+  <li><img src="4.jpg" alt=""></li>
+  <li><img src="5.jpg" alt=""></li>
+  <li><img src="1.jpg" alt=""></li>
+ </ul>
+ <p class="next btn">></p>
+ <p class="pre btn"><</p>
+ </div>
+ <script type="text/javascript" src="1.js"></script>
+ <script type="text/javascript">
+ $(function(){
+  var i=0;
+  $('.next').click(function(){
+  i++;
+  moveImg(i);
+    
+  });
+  $('.pre').click(function(){
+  i--;
+  moveImg(i);
+    
+  });
+  function moveImg(){
+  if (i==6) {
+   i=1;
+   $('.list').css({'left':'0'});
+  }
+   // 是第一张
+  if(i==-1){
+   i=4;
+   $('ul').css({left:(5*-200)});
+  }
+  $('.list').stop().animate({'left':-200*i+'px'},1000); 
+  }
+ })
+ </script>
+</body>
+</html>
